@@ -110,12 +110,12 @@ final class SkinCompatDrawableManager {
             R.drawable.abc_textfield_search_activated_mtrl_alpha,
             R.drawable.abc_cab_background_top_mtrl_alpha,
             R.drawable.abc_text_cursor_material,
-            R.drawable.abc_text_select_handle_left_mtrl_dark,
+            /*R.drawable.abc_text_select_handle_left_mtrl_dark,
             R.drawable.abc_text_select_handle_middle_mtrl_dark,
             R.drawable.abc_text_select_handle_right_mtrl_dark,
             R.drawable.abc_text_select_handle_left_mtrl_light,
             R.drawable.abc_text_select_handle_middle_mtrl_light,
-            R.drawable.abc_text_select_handle_right_mtrl_light
+            R.drawable.abc_text_select_handle_right_mtrl_light*/
     };
 
     /**
@@ -701,12 +701,13 @@ final class SkinCompatDrawableManager {
         // Here we will check that a known Vector drawable resource inside AppCompat can be
         // correctly decoded
         mHasCheckedVectorDrawableSetup = true;
-        final Drawable d = getDrawable(context, R.drawable.abc_vector_test);
+        //这个vector资源会随着更新而被更新，如果一直引用，保不齐后面某个版本，他就又不能用了，所以这里去掉了这个判断。
+        /*final Drawable d = getDrawable(context, R.drawable.abc_ic_clear_material);
         if (d == null || !isVectorDrawable(d)) {
             mHasCheckedVectorDrawableSetup = false;
             throw new IllegalStateException("This app has been built with an incorrect "
                     + "configuration. Please configure your build for VectorDrawableCompat.");
-        }
+        }*/
     }
 
     private static boolean isVectorDrawable(@NonNull Drawable d) {

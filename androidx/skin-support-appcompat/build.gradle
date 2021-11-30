@@ -1,12 +1,14 @@
-apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
     }
@@ -25,6 +27,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation project(':androidx:skin-support')
+}
+
+afterEvaluate {
+    publishing {
+        publications{
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.liyuhaolol'
+                artifactId = 'skin-support-appcompat'
+                version = '4.0.6'
+            }
+        }
+    }
 }
