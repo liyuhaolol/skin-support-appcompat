@@ -1,5 +1,6 @@
 package skin.support.app;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -14,7 +15,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
 
-import skin.support.appcompat.R;
+import androidx.appcompat.R;
 import skin.support.content.res.SkinCompatVectorResources;
 import skin.support.utils.Slog;
 import skin.support.widget.SkinCompatAutoCompleteTextView;
@@ -140,6 +141,7 @@ public class SkinAppCompatViewInflater implements SkinLayoutInflater, SkinWrappe
         return view;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public Context wrapContext(Context context, View parent, AttributeSet attrs) {
         final boolean isPre21 = Build.VERSION.SDK_INT < 21;
@@ -154,7 +156,7 @@ public class SkinAppCompatViewInflater implements SkinLayoutInflater, SkinWrappe
         }
         boolean readAndroidTheme = isPre21; /* Only read android:theme pre-L (L+ handles this anyway) */
         boolean readAppTheme = true; /* Read read app:theme as a fallback at all times for legacy reasons */
-        boolean wrapContext = VectorEnabledTintResources.shouldBeUsed(); /* Only tint wrap the context if enabled */
+        @SuppressLint("RestrictedApi") boolean wrapContext = VectorEnabledTintResources.shouldBeUsed(); /* Only tint wrap the context if enabled */
 
         // We can emulate Lollipop's android:theme attribute propagating down the view hierarchy
         // by using the parent's context

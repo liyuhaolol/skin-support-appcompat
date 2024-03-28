@@ -3,12 +3,13 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    namespace 'spa.lyh.cn.skinsupportappcompat'
+    compileSdk 34
 
     defaultConfig {
         applicationId "spa.lyh.cn.skinsupportappcompat"
         minSdk 23
-        targetSdk 31
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -28,7 +29,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation project(':androidx:skin-support-appcompat')
