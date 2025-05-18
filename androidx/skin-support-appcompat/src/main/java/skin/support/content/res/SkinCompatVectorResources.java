@@ -1,5 +1,6 @@
 package skin.support.content.res;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
@@ -30,6 +31,7 @@ public class SkinCompatVectorResources implements SkinResources {
         SkinCompatDrawableManager.get().clearCaches();
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private Drawable getSkinDrawableCompat(Context context, int resId) {
         if (AppCompatDelegate.isCompatVectorFromResourcesEnabled()) {
             if (!SkinCompatResources.getInstance().isDefaultSkin()) {
@@ -78,7 +80,7 @@ public class SkinCompatVectorResources implements SkinResources {
             if (!SkinCompatResources.getInstance().isDefaultSkin()) {
                 int targetResId = SkinCompatResources.getInstance().getTargetResId(context, resId);
                 if (targetResId != 0) {
-                    return SkinCompatResources.getInstance().getSkinResources().getDrawable(targetResId);
+                    return SkinCompatResources.getInstance().getSkinResources().getDrawable(targetResId,null);
                 }
             }
             return AppCompatResources.getDrawable(context, resId);

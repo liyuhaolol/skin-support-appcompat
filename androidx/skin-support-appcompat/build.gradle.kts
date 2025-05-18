@@ -8,14 +8,14 @@ plugins {
     id("net.thebugmc.gradle.sonatype-central-portal-publisher") version "1.2.3"
 }
 
-val versionName = "4.1.2"
+val versionName = "4.1.3"
 
 android {
     namespace = "skin.support.appcompat"
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 14
+        minSdk = 21
     }
     buildTypes {
         release {
